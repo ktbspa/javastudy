@@ -9,9 +9,9 @@ public class DistanceTests {
       Point p2 = new Point(1,1);
       System.out.println("x1 = " + p1.x + " у1 = " + p1.y);
       System.out.println("x2 = " + p2.x + " у2 = " + p2.y);
-      System.out.println("Правильное расстояние между точками="+Point.distance(p1, p2));
+      System.out.println("Правильное расстояние между точками="+p1.distance(p2));
 
-      Assert.assertEquals(Point.distance(p1, p2),9.219544457292887);
+      Assert.assertEquals(p1.distance(p2),9.219544457292887);
    }
 
    @Test
@@ -21,9 +21,9 @@ public class DistanceTests {
          Point p2 = new Point(1, 1);
          System.out.println("x1 = " + p1.x + " у1 = " + p1.y);
          System.out.println("x2 = " + p2.x + " у2 = " + p2.y);
-         System.out.println("Правильное расстояние между точками=" + Point.distance(p1, p2));
+         System.out.println("Правильное расстояние между точками=" + p1.distance(p2));
 
-         Assert.assertEquals(Point.distance(p1, p2), 12.727922061357855);
+         Assert.assertEquals(p1.distance(p2), 12.727922061357855);
       }
    }
 
@@ -34,9 +34,9 @@ public class DistanceTests {
          Point p2 = new Point(1, 1);
          System.out.println("x1 = " + p1.x + " у1 = " + p1.y);
          System.out.println("x2 = " + p2.x + " у2 = " + p2.y);
-         System.out.println("Правильное расстояние между точками=" + Point.distance(p1, p2));
+         System.out.println("Правильное расстояние между точками=" + p1.distance(p2));
 
-         Assert.assertEquals(Point.distance(p1, p2), 0);
+         Assert.assertEquals(p1.distance(p2), 0);
       }
    }
 }
