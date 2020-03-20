@@ -1,4 +1,4 @@
-package kz.javastudy.addressbook;
+package kz.javastudy.addressbook.model;
 
 public class ContactDates {
    private final String bday;

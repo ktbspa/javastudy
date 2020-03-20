@@ -1,6 +1,8 @@
-package kz.javastudy.addressbook;
+package kz.javastudy.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
+
+import kz.javastudy.addressbook.model.*;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;

@@ -1,4 +1,4 @@
-package kz.javastudy.addressbook;
+package kz.javastudy.addressbook.model;
 
 public class ContactNames {
    private final String firstname;
