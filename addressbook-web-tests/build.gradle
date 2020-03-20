@@ -1,11 +1,9 @@
-apply plugin: 'java'
+ apply plugin: 'java'
 
-repositories {
-    mavenCentral()
-}
+
+ repositories {
+  mavenCentral()
+ }
 dependencies {
-    implementation 'org.testng:testng:7.1.0'
-}
-test {
-    useTestNG()
+ implementation 'org.testng:testng:7.1.0'
 }
