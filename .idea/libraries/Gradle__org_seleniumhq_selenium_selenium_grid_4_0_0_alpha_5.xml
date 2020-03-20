@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.seleniumhq.selenium:selenium-grid:4.0.0-alpha-5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-grid/4.0.0-alpha-5/92e353a21bea78f40398ab2b480c12e0ae142ceb/selenium-grid-4.0.0-alpha-5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-grid/4.0.0-alpha-5/78fb08dffc34a3a7f65dc355c79381f9bafd09b3/selenium-grid-4.0.0-alpha-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
