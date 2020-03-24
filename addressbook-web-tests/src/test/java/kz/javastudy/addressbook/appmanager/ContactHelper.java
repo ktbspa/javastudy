@@ -5,11 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactHelper {
-    private WebDriver wd;
-
-    public ContactHelper(WebDriver wd) {
-        this.wd=wd;
+public class ContactHelper extends HelperBase {
+   public ContactHelper(WebDriver wd) {
+        super(wd);
     }
 
     public void fillContactForm(ContactData contactData) {
@@ -43,19 +41,8 @@ public class ContactHelper {
         click(By.name("amonth"));
         type(By.name("ayear"), contactData.getAyear());
     }
-
-    private void type(By locator, String text) {
-        click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-    }
-
     public void submitContactCreation() {
         click(By.xpath("(//input[@name='submit'])[2]"));
-    }
-
-    private void click(By locator) {
-        wd.findElement(locator).click();
     }
 
     public void gotoAddNewContactPage() {
