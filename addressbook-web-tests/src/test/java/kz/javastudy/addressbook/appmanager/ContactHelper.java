@@ -1,6 +1,7 @@
 package kz.javastudy.addressbook.appmanager;
 
 import kz.javastudy.addressbook.model.ContactData;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -47,5 +48,24 @@ public class ContactHelper extends HelperBase {
 
     public void gotoAddNewContactPage() {
         click(By.linkText("add new"));
+    }
+
+    public void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("//input[@value='Delete']"));
+        Alert alert = wd.switchTo().alert();
+        alert.accept();
+    }
+
+    public void initContactModification() {
+        click(By.xpath("//img[@alt='Details']"));
+        click(By.name("modifiy"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 }
