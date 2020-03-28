@@ -3,6 +3,7 @@ package kz.javastudy.addressbook.appmanager;
 import kz.javastudy.addressbook.model.ContactData;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -41,7 +42,12 @@ public class ContactHelper extends HelperBase {
         new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(contactData.getAmonth());
         click(By.name("amonth"));
         type(By.name("ayear"), contactData.getAyear());
+
+        if (isElementPresent(By.name("new_group"))) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        }
     }
+
     public void submitContactCreation() {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
