@@ -1,20 +1,17 @@
 package kz.javastudy.sandbox;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Collections {
    public static void main (String[] args) {
       String[] langs = {"java", "c#", "python", "PHP"};
 
-      List<String> languages = new ArrayList<String>();
-      languages.add("Java");
-      languages.add("C#");
-      languages.add("Python");
+      List<String> languages = Arrays.asList("java", "c#", "python", "PHP");
 
-      for (String l: languages) {
-         System.out.println("I want to study "+l);
+       for (int i=0; i<languages.size(); i++)
+         System.out.println("I want to learn "+languages.get(i));
       }
 
    }
-}
