@@ -15,15 +15,23 @@ public class GroupData {
       this.id = id;
    }
    public GroupData(String name, String header, String footer) {
-      this.id = 0;
+      this.id = Integer.MAX_VALUE;
       this.name = name;
       this.header = header;
       this.footer = footer;
    }
 
    @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      GroupData groupData = (GroupData) o;
+      return Objects.equals(name, groupData.name);
+   }
+
+   @Override
    public int hashCode() {
-      return Objects.hash(id, name);
+      return Objects.hash(name);
    }
 
    public GroupData(int id, String name, String header, String footer) {
@@ -49,14 +57,6 @@ public class GroupData {
               "id='" + id + '\'' +
               ", name='" + name + '\'' +
               '}';
-   }
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      GroupData groupData = (GroupData) o;
-      return id == groupData.id &&
-              Objects.equals(name, groupData.name);
    }
 
 
