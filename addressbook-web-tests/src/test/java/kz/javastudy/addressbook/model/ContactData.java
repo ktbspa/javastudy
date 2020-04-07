@@ -1,6 +1,9 @@
 package kz.javastudy.addressbook.model;
 
+import java.util.Objects;
+
 public class ContactData {
+    private int id;
     private final String firstname;
     private final String middlename;
     private final String lastname;
@@ -16,6 +19,13 @@ public class ContactData {
     private final String email3;
     private final String homepage;
     private final String bday;
+
+
+
+    public int getId() {
+        return id;
+    }
+
     private final String bmonth;
     private final String byear;
     private final String aday;
@@ -23,7 +33,8 @@ public class ContactData {
     private final String ayear;
     private String group;
 
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String homephone, String mobile, String work, String fax, String email, String email2, String email3, String homepage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group) {
+    public ContactData(int id, String firstname, String middlename, String lastname, String nickname, String company, String address, String homephone, String mobile, String work, String fax, String email, String email2, String email3, String homepage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group) {
+        this.id = id;
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -47,6 +58,30 @@ public class ContactData {
         this.group = group;
     }
 
+    public ContactData(String firstname, String middlename, String lastname, String nickname, String company, String address, String homephone, String mobile, String work, String fax, String email, String email2, String email3, String homepage, String bday, String bmonth, String byear, String aday, String amonth, String ayear, String group) {
+        this.id = 0;
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.nickname = nickname;
+        this.company = company;
+        this.address = address;
+        this.homephone = homephone;
+        this.mobile = mobile;
+        this.work = work;
+        this.fax = fax;
+        this.email = email;
+        this.email2 = email2;
+        this.email3 = email3;
+        this.homepage = homepage;
+        this.bday = bday;
+        this.bmonth = bmonth;
+        this.byear = byear;
+        this.aday = aday;
+        this.amonth = amonth;
+        this.ayear = ayear;
+        this.group = group;
+    }
     public String getFirstname() {
         return firstname;
     }
@@ -129,5 +164,33 @@ public class ContactData {
 
     public String getGroup() {
         return group;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id &&
+                Objects.equals(firstname, that.firstname) &&
+                Objects.equals(lastname, that.lastname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstname, lastname);
     }
 }
