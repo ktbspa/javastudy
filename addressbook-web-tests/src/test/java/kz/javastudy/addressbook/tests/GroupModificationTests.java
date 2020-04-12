@@ -2,10 +2,8 @@ package kz.javastudy.addressbook.tests;
 
 import kz.javastudy.addressbook.model.GroupData;
 import kz.javastudy.addressbook.model.Groups;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
