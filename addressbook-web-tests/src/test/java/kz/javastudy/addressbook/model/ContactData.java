@@ -18,6 +18,7 @@ public class ContactData {
     private String email;
     private String email2;
     private String email3;
+    private String allEmails;
     private String homepage;
     private String bday;
     private String bmonth;
@@ -25,7 +26,6 @@ public class ContactData {
     private String aday;
     private String amonth;
     private String ayear;
-
     private String group;
 
     public String getAllPhones() {
@@ -34,6 +34,15 @@ public class ContactData {
 
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
+        return this;
+    }
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
         return this;
     }
 
