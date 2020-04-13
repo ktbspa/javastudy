@@ -100,12 +100,10 @@ public class ContactData {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", homephone='" + homephone + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", work='" + work + '\'' +
                 '}';
-    }
-
-    public ContactData withId(int id) {
-        this.id = id;
-        return this;
     }
 
     @Override
@@ -115,12 +113,20 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname);
+                Objects.equals(lastname, that.lastname) &&
+                Objects.equals(homephone, that.homephone) &&
+                Objects.equals(mobile, that.mobile) &&
+                Objects.equals(work, that.work);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstname, lastname, homephone, mobile, work);
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
     }
 
     public ContactData withFirstname(String firstname) {
