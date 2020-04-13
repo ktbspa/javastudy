@@ -4,7 +4,6 @@ import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

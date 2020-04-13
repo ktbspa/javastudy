@@ -17,8 +17,7 @@ public class ContactHelper extends HelperBase {
 
    public void fillContactForm(ContactData contactData, boolean creation) {
       type(By.name("firstname"), contactData.getFirstname());
-      wd.findElement(By.name("middlename")).clear();
-      wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
+      type(By.name("middlename"), contactData.getLastname());
       type(By.name("lastname"), contactData.getLastname());
       type(By.name("nickname"), contactData.getNickname());
       type(By.name("company"), contactData.getCompany());
@@ -60,16 +59,14 @@ public class ContactHelper extends HelperBase {
       click(By.linkText("add new"));
    }
    private void selectContactById(int id) { wd.findElement(By.cssSelector("input[value='"+id+"']")).click();   }
-
    public void deleteSelectedContact() {
       click(By.xpath("//input[@value='Delete']"));
       Alert alert = wd.switchTo().alert();
       alert.accept();
    }
 
-   public void initContactModification() {
-      click(By.xpath("//img[@alt='Details']"));
-      click(By.name("modifiy"));
+   public void initContactModification(int id) {
+      wd.findElement(By.cssSelector("a[href='edit.php?id=" +id+ "']")).click();
    }
 
    public void submitContactModification() {
@@ -77,15 +74,15 @@ public class ContactHelper extends HelperBase {
    }
 
    public void create(ContactData contact, boolean b) {
-      click(By.linkText("add new"));
+      gotoAddNewContactPage();
       fillContactForm(contact, true);
       submitContactCreation();
       contactCache = null;
       returnToHomePage();
    }
    public void modify(ContactData contact) {
-      selectContactById(contact.getId());
-      initContactModification();
+      returnToHomePage();
+      initContactModification(contact.getId());
       fillContactForm(contact, false);
       submitContactModification();
       contactCache = null;
