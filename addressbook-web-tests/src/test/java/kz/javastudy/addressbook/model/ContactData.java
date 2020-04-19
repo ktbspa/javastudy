@@ -1,35 +1,65 @@
 package kz.javastudy.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 import java.util.Objects;
 
+@XStreamAlias("contact")
 public class ContactData {
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;
-    private String firstname;
-    private String middlename;
-    private String lastname;
-    private String nickname;
-    private File photo;
-    private String company;
-    private String address;
-    private String homephone;
-    private String mobile;
-    private String work;
-    private String allPhones;
-    private String fax;
-    private String email;
-    private String email2;
-    private String email3;
-    private String allEmails;
-    private String homepage;
-    private String bday;
-    private String bmonth;
-    private String byear;
-    private String aday;
-    private String amonth;
-    private String ayear;
-    private String group;
 
+    @Expose
+    private String firstname;
+    @Expose
+    private String middlename;
+    @Expose
+    private String lastname;
+    @Expose
+    private String nickname;
+    @Expose
+    private File photo;
+    @Expose
+    private String company;
+    @Expose
+    private String address;
+    @Expose
+    private String homephone;
+    @Expose
+    private String mobile;
+    @Expose
+    private String work;
+    @Expose
+    private String allPhones;
+    @Expose
+    private String fax;
+    @Expose
+    private String email;
+    @Expose
+    private String email2;
+    @Expose
+    private String email3;
+    @Expose
+    private String allEmails;
+    @Expose
+    private String homepage;
+    @Expose
+    private String bday;
+    @Expose
+    private String bmonth;
+    @Expose
+    private String byear;
+    @Expose
+    private String aday;
+    @Expose
+    private String amonth;
+    @Expose
+    private String ayear;
+    @Expose
+    private String group;
 
     public File getPhoto() { return photo; }
 

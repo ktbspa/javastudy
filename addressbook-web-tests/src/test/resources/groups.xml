@@ -1,0 +1,17 @@
+<list>
+  <group>
+    <name>Beta 0</name>
+    <header>Bheader 0</header>
+    <footer>Bfooter 0</footer>
+  </group>
+  <group>
+    <name>Beta 1</name>
+    <header>Bheader 1</header>
+    <footer>Bfooter 1</footer>
+  </group>
+  <group>
+    <name>Beta 2</name>
+    <header>Bheader 2</header>
+    <footer>Bfooter 2</footer>
+  </group>
+</list>

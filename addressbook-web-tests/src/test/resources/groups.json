@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Beta 0",
+    "header": "Bheader 0",
+    "footer": "Bfooter 0"
+  },
+  {
+    "name": "Beta 1",
+    "header": "Bheader 1",
+    "footer": "Bfooter 1"
+  },
+  {
+    "name": "Beta 2",
+    "header": "Bheader 2",
+    "footer": "Bfooter 2"
+  },
+  {
+    "name": "Beta 3",
+    "header": "Bheader 3",
+    "footer": "Bfooter 3"
+  }
+]
