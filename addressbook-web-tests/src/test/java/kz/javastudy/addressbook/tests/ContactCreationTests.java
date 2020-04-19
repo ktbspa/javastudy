@@ -3,9 +3,7 @@ package kz.javastudy.addressbook.tests;
 import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
 import org.testng.annotations.Test;
-
 import java.io.File;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -24,7 +22,7 @@ public class ContactCreationTests extends TestBase {
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size()+1));
     Contacts after = app.contact().all();
-    //assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c)->c.getId()).max().getAsInt()))));
+    assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c)->c.getId()).max().getAsInt()))));
   }
 
   @Test (enabled = false)
