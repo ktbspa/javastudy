@@ -1,5 +1,6 @@
 package kz.javastudy.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -8,6 +9,7 @@ public class ContactData {
     private String middlename;
     private String lastname;
     private String nickname;
+    private File photo;
     private String company;
     private String address;
     private String homephone;
@@ -27,6 +29,14 @@ public class ContactData {
     private String amonth;
     private String ayear;
     private String group;
+
+
+    public File getPhoto() { return photo; }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
 
     public String getAllPhones() {
         return allPhones;
@@ -119,9 +129,6 @@ public class ContactData {
                 "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", homephone='" + homephone + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", work='" + work + '\'' +
                 '}';
     }
 
