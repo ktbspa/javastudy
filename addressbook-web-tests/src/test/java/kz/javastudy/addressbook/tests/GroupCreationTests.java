@@ -3,7 +3,6 @@ package kz.javastudy.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
-import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.GroupData;
 import kz.javastudy.addressbook.model.Groups;
 import org.testng.annotations.DataProvider;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -69,6 +67,7 @@ public class GroupCreationTests extends TestBase {
 
   @Test (dataProvider = "validGroupsFromJson")
   public void testGroupCreation(GroupData group) {
+
     app.goTo().groupPage();
     Groups before = app.group().all();
     app.group().create(group);
