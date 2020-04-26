@@ -5,7 +5,6 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
-import kz.javastudy.addressbook.model.GroupData;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.io.BufferedReader;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 

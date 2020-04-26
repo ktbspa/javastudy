@@ -95,6 +95,7 @@ public class ContactData {
     @Expose
     @Transient
     private String group;
+
     @Column (name = "photo")
     @Type(type = "text")
     private String photo;
@@ -198,12 +199,18 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(firstname, that.firstname) &&
-                Objects.equals(lastname, that.lastname);
+                Objects.equals(middlename, that.middlename) &&
+                Objects.equals(lastname, that.lastname) &&
+                Objects.equals(nickname, that.nickname) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(homephone, that.homephone) &&
+                Objects.equals(homepage, that.homepage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstname, middlename, lastname, nickname, company, address, homephone, homepage);
     }
 
     @Override
