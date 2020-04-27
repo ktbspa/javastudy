@@ -20,8 +20,8 @@
     <aday>20</aday>
     <amonth>May</amonth>
     <ayear>2008</ayear>
-    <group>Beta 0</group>
     <photo>src\test\resources\icon.jpg</photo>
+    <groups/>
   </contact>
   <contact>
     <firstname>Anthony 1</firstname>
@@ -44,7 +44,7 @@
     <aday>20</aday>
     <amonth>May</amonth>
     <ayear>2008</ayear>
-    <group>Beta 0</group>
     <photo>src\test\resources\icon.jpg</photo>
+    <groups/>
   </contact>
 </list>

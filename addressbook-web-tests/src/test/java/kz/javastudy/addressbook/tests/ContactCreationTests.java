@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
+import kz.javastudy.addressbook.model.Groups;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import java.io.BufferedReader;
@@ -31,7 +32,7 @@ public class ContactCreationTests extends TestBase {
                 .withNickname(split[3]).withCompany(split[4]).withAddress(split[5]).withHomephone(split[6]).withMobile(split[7])
                 .withWork(split[8]).withFax(split[9]).withEmail(split[10]).withEmail2(split[11]).withEmail3(split[12])
                 .withHomepage(split[13]).withBday(split[14]).withBmonth(split[15]).withByear(split[16]).withAday(split[17])
-                .withAmonth(split[18]).withAyear(split[19]).withGroup(split[20])});
+                .withAmonth(split[18]).withAyear(split[19])});
         line = reader.readLine();
       }
       return list.iterator();
@@ -73,6 +74,8 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContactsFromXml")
   public void testContactCreation(ContactData contact) throws Exception {
+    Groups groups = app.db().groups();
+    contact.inGroup(groups.iterator().next());
     app.goTo().homePage();
     Contacts before = app.db().contacts();
     File photo = new File("src/test/resources/icon.jpg");
@@ -91,7 +94,7 @@ public class ContactCreationTests extends TestBase {
     ContactData contact = new ContactData().withId(before.size()-1).withFirstname("Anthony").withLastname("S'tark").withMiddlename("Howard")
             .withNickname("ironman").withPhoto(photo).withCompany("Stark Industries").withAddress("StarkTower").withHomephone("123").withMobile("456")
             .withWork("789").withFax("000").withEmail("ironman@k.kk").withEmail2("email@k.kk").withEmail3("email3@k.kk")
-            .withHomepage("avengers.kk").withBday("29").withBmonth("May").withByear("1970").withAday("20").withAmonth("May").withAyear("2008").withGroup("Beta 0");
+            .withHomepage("avengers.kk").withBday("29").withBmonth("May").withByear("1970").withAday("20").withAmonth("May").withAyear("2008");
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size()));

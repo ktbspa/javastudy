@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import kz.javastudy.addressbook.model.ContactData;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -59,7 +60,7 @@ public class ContactDataGenerator {
                     .withEmail2(String.format("email@k.kk")).withEmail3(String.format("email3@k.kk"))
                     .withHomepage(String.format("avengers.kk")).withBday(String.format("29")).withBmonth(String.format("May"))
                     .withByear(String.format("1970")).withAday(String.format("20")).withAmonth(String.format("May"))
-                    .withAyear(String.format("2008")).withGroup(String.format("Beta 0")));
+                    .withAyear(String.format("2008")));
                  }
          return contacts;
       }
@@ -72,7 +73,7 @@ public class ContactDataGenerator {
                     contact.getCompany(), contact.getAddress(), contact.getHomepage(), contact.getMobile(),
                     contact.getWork(), contact.getFax(), contact.getEmail(), contact.getEmail2(), contact.getEmail3(),
                     contact.getHomepage(), contact.getBday(), contact.getBmonth(), contact.getByear(),
-                    contact.getAday(), contact.getAmonth(), contact.getAyear(), contact.getGroup()));
+                    contact.getAday(), contact.getAmonth(), contact.getAyear()));
          }
          writer.close();
       }
