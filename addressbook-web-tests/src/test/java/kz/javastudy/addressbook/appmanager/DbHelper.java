@@ -4,6 +4,7 @@ import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
 import kz.javastudy.addressbook.model.GroupData;
 import kz.javastudy.addressbook.model.Groups;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -38,5 +39,27 @@ public class DbHelper {
       session.getTransaction().commit();
       session.close();
       return new Contacts(result);
+   }
+
+   public GroupData getGroupById(int id) {
+      Session session = sessionFactory.openSession();
+      session.beginTransaction();
+      Query query = session.createQuery("from GroupData where id=:id");
+      query.setParameter("id", id);
+      GroupData result = (GroupData) query.list().get(0);
+      session.getTransaction().commit();
+      session.close();
+      return result;
+   }
+
+   public ContactData getContactById(int id) {
+      Session session = sessionFactory.openSession();
+      session.beginTransaction();
+      Query query = session.createQuery("from ContactData where id=:id");
+      query.setParameter("id", id);
+      ContactData result = (ContactData) query.list().get(0);
+      session.getTransaction().commit();
+      session.close();
+      return result;
    }
 }

@@ -2,6 +2,7 @@ package kz.javastudy.addressbook.appmanager;
 
 import kz.javastudy.addressbook.model.ContactData;
 import kz.javastudy.addressbook.model.Contacts;
+import kz.javastudy.addressbook.model.GroupData;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import java.util.List;
+
+import static javafx.beans.binding.Bindings.select;
 
 public class ContactHelper extends HelperBase {
    public ContactHelper(WebDriver wd) {
@@ -63,7 +66,7 @@ public class ContactHelper extends HelperBase {
    public void gotoAddNewContactPage() {
       click(By.linkText("add new"));
    }
-   private void selectContactById(int id) { wd.findElement(By.cssSelector("input[value='"+id+"']")).click();   }
+
    public void deleteSelectedContact() {
       click(By.xpath("//input[@value='Delete']"));
       Alert alert = wd.switchTo().alert();
@@ -148,4 +151,25 @@ public class ContactHelper extends HelperBase {
       return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
               .withHomephone(homephone).withMobile(mobile).withWork(work).withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
    }
+
+   public void addContactToGroup(ContactData contact, GroupData group) {
+      selectContactById(contact.getId());
+      selectGroupFromDropdown(group);
+      addContactToGroup();
+      returnToHomePage();
+   }
+   private void selectContactById(int id) { wd.findElement(By.cssSelector("input[value='"+id+"']")).click();   }
+   private void selectGroupFromDropdown(GroupData group) { select(By.name("to_group"), group.getName());   }
+   private void addContactToGroup() { click(By.name("add")); }
+
+   public void removeContactFromGroup(ContactData contact, GroupData group) {
+      selectGroupWithContacts(group);
+      selectContactById(contact.getId());
+      removeContactFromGroup();
+      returnToHomePage();
+   }
+   private void selectGroupWithContacts(GroupData group) { select(By.name("group"), group.getName()); }
+   private void removeContactFromGroup() { click(By.name("remove")); }
+
+
 }
