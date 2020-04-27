@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactDataGenerator {
-   @Parameter(names="-c", description = "Group count")
+   @Parameter(names="-c", description = "Contact count")
    public int count;
    @Parameter (names="-f", description = "Target file")
    public String file;
@@ -50,15 +50,16 @@ public class ContactDataGenerator {
    private static List<ContactData> generateContacts(int count) {
          List<ContactData> contacts = new ArrayList<ContactData>();
          for (int i=0; i<count; i++) {
+            File photo = new File("src/test/resources/icon.jpg");
             contacts.add(new ContactData().withFirstname(String.format("Anthony %s", i)).withLastname(String.format("Stark", i))
-                    .withMiddlename(String.format("Howard")).withNickname(String.format("ironman"))
+                    .withMiddlename(String.format("Howard")).withNickname(String.format("ironman")).withPhoto(photo)
                     .withCompany(String.format("Stark Industries")).withAddress(String.format("StarkTower"))
                     .withHomephone(String.format("123")).withMobile(String.format("456")).withWork(String.format("789"))
                     .withFax(String.format("000")).withEmail(String.format("ironman@k.kk"))
                     .withEmail2(String.format("email@k.kk")).withEmail3(String.format("email3@k.kk"))
                     .withHomepage(String.format("avengers.kk")).withBday(String.format("29")).withBmonth(String.format("May"))
                     .withByear(String.format("1970")).withAday(String.format("20")).withAmonth(String.format("May"))
-                    .withAyear(String.format("2008")).withGroup(String.format("Alpha")));
+                    .withAyear(String.format("2008")).withGroup(String.format("Beta 0")));
                  }
          return contacts;
       }

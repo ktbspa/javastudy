@@ -27,7 +27,7 @@ public class ContactCreationTests extends TestBase {
       String line = reader.readLine();
       while (line != null) {
         String[] split = line.split(";");
-        list.add(new Object[]{new ContactData().withFirstname(split[0]).withLastname(split[1]).withMiddlename(split[2])
+        list.add(new Object[]{new ContactData().withFirstname(split[0]).withMiddlename(split[1]).withLastname(split[2])
                 .withNickname(split[3]).withCompany(split[4]).withAddress(split[5]).withHomephone(split[6]).withMobile(split[7])
                 .withWork(split[8]).withFax(split[9]).withEmail(split[10]).withEmail2(split[11]).withEmail3(split[12])
                 .withHomepage(split[13]).withBday(split[14]).withBmonth(split[15]).withByear(split[16]).withAday(split[17])
@@ -74,27 +74,28 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContactsFromXml")
   public void testContactCreation(ContactData contact) throws Exception {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
+    File photo = new File("src/test/resources/icon.jpg");
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size()+1));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt((c)->c.getId()).max().getAsInt()))));
   }
 
   @Test (enabled = false)
   public void testBadContactCreation() throws Exception {
     app.goTo().homePage();
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     File photo = new File("src/test/resources/icon.jpg");
     ContactData contact = new ContactData().withId(before.size()-1).withFirstname("Anthony").withLastname("S'tark").withMiddlename("Howard")
             .withNickname("ironman").withPhoto(photo).withCompany("Stark Industries").withAddress("StarkTower").withHomephone("123").withMobile("456")
             .withWork("789").withFax("000").withEmail("ironman@k.kk").withEmail2("email@k.kk").withEmail3("email3@k.kk")
-            .withHomepage("avengers.kk").withBday("29").withBmonth("May").withByear("1970").withAday("20").withAmonth("May").withAyear("2008").withGroup("Alpha");
+            .withHomepage("avengers.kk").withBday("29").withBmonth("May").withByear("1970").withAday("20").withAmonth("May").withAyear("2008").withGroup("Beta 0");
     app.contact().create(contact, true);
     app.goTo().homePage();
     assertThat(app.contact().count(), equalTo(before.size()));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after, equalTo(before));
   }
 

@@ -20,7 +20,8 @@
     <aday>20</aday>
     <amonth>May</amonth>
     <ayear>2008</ayear>
-    <group>Alpha</group>
+    <group>Beta 0</group>
+    <photo>src\test\resources\icon.jpg</photo>
   </contact>
   <contact>
     <firstname>Anthony 1</firstname>
@@ -43,29 +44,7 @@
     <aday>20</aday>
     <amonth>May</amonth>
     <ayear>2008</ayear>
-    <group>Alpha</group>
-  </contact>
-  <contact>
-    <firstname>Anthony 2</firstname>
-    <middlename>Howard</middlename>
-    <lastname>Stark</lastname>
-    <nickname>ironman</nickname>
-    <company>Stark Industries</company>
-    <address>StarkTower</address>
-    <homephone>123</homephone>
-    <mobile>456</mobile>
-    <work>789</work>
-    <fax>000</fax>
-    <email>ironman@k.kk</email>
-    <email2>email@k.kk</email2>
-    <email3>email3@k.kk</email3>
-    <homepage>avengers.kk</homepage>
-    <bday>29</bday>
-    <bmonth>May</bmonth>
-    <byear>1970</byear>
-    <aday>20</aday>
-    <amonth>May</amonth>
-    <ayear>2008</ayear>
-    <group>Alpha</group>
+    <group>Beta 0</group>
+    <photo>src\test\resources\icon.jpg</photo>
   </contact>
 </list>
