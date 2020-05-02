@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.io.File;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,16 +32,28 @@ public class ContactAddRemoveGroupTests extends TestBase {
 
    @Test
    public void testAddContactToGroup() {
-      ContactData contact = app.db().contacts().iterator().next();
-      if (contact.getGroups().equals(app.db().groups())) {
-         app.goTo().groupPage();
-         app.group().create(new GroupData().withName("Beta").withHeader("test1").withFooter("test2"));
-      }
-
-      GroupData group = app.db().groups().stream().filter((g) -> !g.getContacts().contains(contact)).findFirst().get();
-      app.goTo().homePage();
       Contacts cBefore = app.db().contacts();
       Groups gBefore = app.db().groups();
+      ContactData contact = null;
+      GroupData group = null;
+      for (ContactData c : cBefore) {
+         for (GroupData g : gBefore) {
+            if (!c.getGroups().contains(g)) {
+               contact = c;
+               group = g;
+            }
+         }
+      }
+      if (contact == null) {
+         app.goTo().groupPage();
+         GroupData newGroup = new GroupData().withName("Beta").withHeader("test1").withFooter("test2");
+         app.group().create(newGroup);
+         GroupData freeGroup = app.db().groups().stream().filter((g) -> g.getName()
+                 .equals(newGroup.getName())).findAny().get();
+         group = freeGroup;
+         contact = app.db().contacts().iterator().next();
+      }
+
       app.contact().addContactToGroup(contact, group);
 
       ContactData modifiedContact = app.db().getContactById(contact.getId());
@@ -58,31 +71,35 @@ public class ContactAddRemoveGroupTests extends TestBase {
 
    @Test
    public void testRemoveContactFromGroup() {
-      ContactData contact = app.db().contacts().iterator().next();
-      GroupData group = app.db().groups().iterator().next();
-
-      if (contact.getGroups().size() == 0) {
-         app.goTo().homePage();
-         app.contact().addContactToGroup(contact, group);
-      }
-
-      ContactData groupedContact = app.db().contacts().stream().filter((c) -> c.getGroups().size() > 0).iterator().next();
-      GroupData groupToRemove = groupedContact.getGroups().iterator().next();
-
-      app.goTo().homePage();
       Contacts cBefore = app.db().contacts();
       Groups gBefore = app.db().groups();
-      app.contact().removeContactFromGroup(groupedContact, groupToRemove);
+      ContactData contact = null;
+      GroupData groupToRemove = null;
+
+      Optional<ContactData> groupedContact = cBefore.stream()
+              .filter(contactData -> contactData.getGroups().stream().anyMatch(g -> gBefore.contains(g)))
+              .findAny();
+      if (groupedContact.isPresent()) {
+         contact = groupedContact.get();
+         groupToRemove = contact.getGroups().stream().findAny().get();
+      } else {
+         ContactData anyContact = app.db().contacts().iterator().next();
+         GroupData anyGroup = app.db().groups().iterator().next();
+         app.contact().addContactToGroup(anyContact, anyGroup);
+         contact = anyContact;
+         groupToRemove = anyGroup;
+      }
+      app.contact().removeContactFromGroup(contact, groupToRemove);
 
       ContactData modifiedContact = app.db().getContactById(contact.getId());
-      GroupData modifiedGroup = app.db().getGroupById(group.getId());
+      GroupData modifiedGroup = app.db().getGroupById(groupToRemove.getId());
       Contacts cAfter = app.db().contacts();
       Groups gAfter = app.db().groups();
 
       assertThat(app.contact().count(), equalTo(cBefore.size()-1)); //потому что выше выбрана группа, из которой удалили 1 контакт
       assertThat(cAfter, equalTo(cBefore.without(modifiedContact).with(modifiedContact)));
       assertThat(gAfter, equalTo(gBefore.without(modifiedGroup).with(modifiedGroup)));
-      Assert.assertFalse(modifiedContact.getGroups().contains(group));
+      Assert.assertFalse(modifiedContact.getGroups().contains(groupToRemove));
       Assert.assertFalse(modifiedGroup.getContacts().contains(contact));
    }
  }
