@@ -59,4 +59,11 @@ public class ApplicationManager {
             return false;
         }
     }
+    public HttpSession newSession() {
+        return new HttpSession(this);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }
