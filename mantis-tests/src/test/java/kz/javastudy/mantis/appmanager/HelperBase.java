@@ -17,12 +17,11 @@ public class HelperBase {
         this.wd=app.getDriver();
     }
 
-    protected void click(By locator) {
-        wd.findElement(locator).click();
-    }
+    protected void click(By locator) { wd.findElement(locator).click(); }
     protected void select(By locator, String text) {
         new Select(wd.findElement(locator)).selectByVisibleText(text);
     }
+    protected void selectByVisibleText(By locator, String text) { wd.findElement(locator).sendKeys(text); }
 
     protected void type(By locator, String text) {
         click(locator);
