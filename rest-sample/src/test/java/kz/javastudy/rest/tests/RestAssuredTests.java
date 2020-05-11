@@ -1,38 +1,44 @@
-package kz.javastudy.rest;
+package kz.javastudy.rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
+import kz.javastudy.rest.model.Issue;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.util.Set;
-
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase {
 
    @BeforeClass
    public void init() {
-      RestAssured.authentication = RestAssured.basic("288f44776e7bec4bf44fdfeb1e646490", "");
+      RestAssured.authentication = RestAssured.basic(app.getProperty("authToken"), app.getProperty("authPass"));
+   }
+
+   @Test
+   public void testSkipIfNotFixed() throws IOException {
+      int issueId = 49;
+      skipIfNotFixed(issueId);
+      System.out.println("The issue " +issueId+ " is successfully resolved. Test started.");
    }
 
    @Test
    public void testCreateIssue() throws IOException {
       Set<Issue> oldIssues = getIssues();
-      Issue newIssue = new Issue().withSubject("New marvel issue 2").withDescription("Marvel test issue description to show");
+      Issue newIssue = new Issue().withSubject("New marvel 6").withDescription("Marvel description");
       int issueId = createIssue(newIssue);
       Set<Issue> newIssues = getIssues();
       oldIssues.add(newIssue.withId(issueId));
       assertEquals(newIssues, oldIssues);
-      System.out.println(newIssue.getDescription()); //checkout the new issue description
+      System.out.println(newIssue.getId()); //checkout the new issue id
    }
 
    private Set<Issue> getIssues() throws IOException {
-      String json = RestAssured.get("https://bugify.stqa.ru/api/issues.json?limit=500").asString();
+      String json = RestAssured.get(app.getProperty("IssuesPage")+String.format("?limit=500")).asString();
       JsonElement parsed = new JsonParser().parse(json);
       JsonElement issues = parsed.getAsJsonObject().get("issues");
       return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
@@ -42,7 +48,7 @@ public class RestAssuredTests {
       String json = RestAssured.given()
               .parameter("subject", newIssue.getSubject())
               .parameter("description", newIssue.getDescription())
-              .post("https://bugify.stqa.ru/api/issues.json").asString();
+              .post(app.getProperty("IssuesPage")).asString();
       JsonElement parsed = new JsonParser().parse(json);
       return parsed.getAsJsonObject().get("issue_id").getAsInt();
    }
