@@ -1,0 +1,62 @@
+Microsoft Windows [Version 10.0.18363.719]
+(c) Корпорация Майкрософт (Microsoft Corporation), 2019. Все права защищены.
+
+C:\Users\t_yugay.ALM>cd /D d:/
+
+d:\>cd 27. Software
+
+d:\27. Software>java -jar jenkins.war
+Running from: D:\27. Software\jenkins.war
+webroot: $user.home/.jenkins
+2020-05-18 04:40:59.201+0000 [id=1]     INFO    org.eclipse.jetty.util.log.Log#initialized: Logging initialized @2025ms to org.eclipse.jetty.util.log.JavaUtilLog
+2020-05-18 04:40:59.544+0000 [id=1]     INFO    winstone.Logger#logInternal: Beginning extraction from war file
+2020-05-18 04:41:01.977+0000 [id=1]     WARNING o.e.j.s.handler.ContextHandler#setContextPath: Empty contextPath
+2020-05-18 04:41:02.116+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: jetty-9.4.27.v20200227; built: 2020-02-27T18:37:21.340Z; git: a304fd9f351f337e7c0e2a7c28878dd536149c6c; jvm 1.8.0_211-b12
+2020-05-18 04:41:07.644+0000 [id=1]     INFO    o.e.j.w.StandardDescriptorProcessor#visitServlet: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
+2020-05-18 04:41:07.996+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: DefaultSessionIdManager workerName=node0
+2020-05-18 04:41:07.996+0000 [id=1]     INFO    o.e.j.s.s.DefaultSessionIdManager#doStart: No SessionScavenger set, using defaults
+2020-05-18 04:41:08.001+0000 [id=1]     INFO    o.e.j.server.session.HouseKeeper#startScavenging: node0 Scavenging every 600000ms
+2020-05-18 04:41:08.656+0000 [id=1]     INFO    hudson.WebAppMain#contextInitialized: Jenkins home directory: C:\Users\t_yugay.ALM\.jenkins found at: $user.home/.jenkins
+2020-05-18 04:41:09.190+0000 [id=1]     INFO    o.e.j.s.handler.ContextHandler#doStart: Started w.@3b366632{Jenkins v2.222.3,/,file:///C:/Users/t_yugay.ALM/.jenkins/war/,AVAILABLE}{C:\Users\t_yugay.ALM\.jenkins\war}
+2020-05-18 04:41:09.303+0000 [id=1]     INFO    o.e.j.server.AbstractConnector#doStart: Started ServerConnector@491b9b8{HTTP/1.1, (http/1.1)}{0.0.0.0:8080}
+2020-05-18 04:41:09.303+0000 [id=1]     INFO    org.eclipse.jetty.server.Server#doStart: Started @12128ms
+2020-05-18 04:41:09.305+0000 [id=22]    INFO    winstone.Logger#logInternal: Winstone Servlet Engine running: controlPort=disabled
+2020-05-18 04:41:10.779+0000 [id=29]    INFO    jenkins.InitReactorRunner$1#onAttained: Started initialization
+2020-05-18 04:41:10.806+0000 [id=29]    INFO    jenkins.InitReactorRunner$1#onAttained: Listed all plugins
+2020-05-18 04:41:12.305+0000 [id=27]    INFO    jenkins.InitReactorRunner$1#onAttained: Prepared all plugins
+2020-05-18 04:41:12.310+0000 [id=27]    INFO    jenkins.InitReactorRunner$1#onAttained: Started all plugins
+2020-05-18 04:41:12.317+0000 [id=29]    INFO    jenkins.InitReactorRunner$1#onAttained: Augmented all extensions
+2020-05-18 04:41:13.945+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: System config loaded
+2020-05-18 04:41:13.945+0000 [id=30]    INFO    jenkins.InitReactorRunner$1#onAttained: System config adapted
+2020-05-18 04:41:13.947+0000 [id=34]    INFO    jenkins.InitReactorRunner$1#onAttained: Loaded all jobs
+2020-05-18 04:41:13.948+0000 [id=28]    INFO    jenkins.InitReactorRunner$1#onAttained: Configuration for all jobs updated
+2020-05-18 04:41:14.207+0000 [id=47]    INFO    hudson.model.AsyncPeriodicWork#lambda$doRun$0: Started Download metadata
+2020-05-18 04:41:14.269+0000 [id=47]    INFO    hudson.util.Retrier#start: Attempt #1 to do the action check updates server
+2020-05-18 04:41:15.735+0000 [id=31]    INFO    o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@165c554f: display name [Root WebApplicationContext]; startup date [Mon May 18 10:41:15 ALMT 2020]; root of context hierarchy
+2020-05-18 04:41:15.743+0000 [id=31]    INFO    o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@165c554f]: org.springframework.beans.factory.support.DefaultListableBeanFactory@2a9e9714
+2020-05-18 04:41:15.757+0000 [id=31]    INFO    o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2a9e9714: defining beans [authenticationManager]; root of factory hierarchy
+2020-05-18 04:41:15.948+0000 [id=31]    INFO    o.s.c.s.AbstractApplicationContext#prepareRefresh: Refreshing org.springframework.web.context.support.StaticWebApplicationContext@edeb1e9: display name [Root WebApplicationContext]; startup date [Mon May 18 10:41:15 ALMT 2020]; root of context hierarchy
+2020-05-18 04:41:15.949+0000 [id=31]    INFO    o.s.c.s.AbstractApplicationContext#obtainFreshBeanFactory: Bean factory for application context [org.springframework.web.context.support.StaticWebApplicationContext@edeb1e9]: org.springframework.beans.factory.support.DefaultListableBeanFactory@308dbd2d
+2020-05-18 04:41:15.952+0000 [id=31]    INFO    o.s.b.f.s.DefaultListableBeanFactory#preInstantiateSingletons: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@308dbd2d: defining beans [filter,legacy]; root of factory hierarchy
+2020-05-18 04:41:16.271+0000 [id=31]    INFO    jenkins.install.SetupWizard#init:
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+862aa2eda4a745e0846fd2c728949b1e
+
+This may also be found at: C:\Users\t_yugay.ALM\.jenkins\secrets\initialAdminPassword
+
+*************************************************************
+*************************************************************
+*************************************************************
+
+2020-05-18 04:41:28.057+0000 [id=29]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+2020-05-18 04:41:28.110+0000 [id=21]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+2020-05-18 04:41:28.703+0000 [id=47]    INFO    h.m.DownloadService$Downloadable#load: Obtained the updated data file for hudson.tasks.Maven.MavenInstaller
+2020-05-18 04:41:28.704+0000 [id=47]    INFO    hudson.util.Retrier#start: Performed the action check updates server successfully at the attempt #1
+2020-05-18 04:41:28.711+0000 [id=47]    INFO    hudson.model.AsyncPeriodicWork#lambda$doRun$0: Finished Download metadata. 14а495 ms
