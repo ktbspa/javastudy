@@ -106,7 +106,7 @@ public class ContactData {
         return new Groups (groups);
     }
 
-    public File getPhoto() { return new File (photo); }
+    //public File getPhoto() { return new File (photo); }
 
     public ContactData withPhoto(File photo) {
         this.photo = photo.getPath();
