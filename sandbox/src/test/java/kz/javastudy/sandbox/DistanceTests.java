@@ -2,7 +2,7 @@ package kz.javastudy.sandbox;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-@Test
+@Test (enabled = false)
 public class DistanceTests {
    public void testDistance() {
       Point p1 = new Point(10, 10);
@@ -27,7 +27,7 @@ public class DistanceTests {
       }
    }
 
-   @Test
+   @Test (enabled=false)
    public class DistanceTests2 {
       public void testDistance() {
          Point p1 = new Point(10, 10);
