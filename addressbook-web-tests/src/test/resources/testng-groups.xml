@@ -4,8 +4,6 @@
     <test name="Groups" >
         <classes>
             <class name="kz.javastudy.addressbook.tests.GroupModificationTests"/>
-            <class name="kz.javastudy.addressbook.tests.GroupCreationTests" />
-            <class name="kz.javastudy.addressbook.tests.GroupDeletionTests"/>
         </classes>
     </test>
 </suite>
