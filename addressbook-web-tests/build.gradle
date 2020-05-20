@@ -1,8 +1,11 @@
  apply plugin: 'java'
 
-
  repositories {
   mavenCentral()
+ }
+
+ configurations {
+     agent
  }
 dependencies {
  implementation 'org.testng:testng:7.1.0'
@@ -14,6 +17,9 @@ dependencies {
  implementation 'ch.qos.logback:logback-classic:1.3.0-alpha5'
  implementation 'mysql:mysql-connector-java:8.0.20'
  implementation 'org.hibernate:hibernate-core:5.1.0.Final'
+ implementation "ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4"
+ agent "org.aspectj:aspectjweaver:1.8.0"
+
 }
 
  task testGroups(type: Test) {
@@ -32,6 +38,10 @@ dependencies {
   if (project.hasProperty('verifyUI')) {
    systemProperty 'verifyUI', "${verifyUI}"
   }
+ }
+
+ testGroups.doFirst {
+     jvmArgs "-javaagent:${configurations.agent.singleFile}"
  }
 
  task testContacts(type: Test) {

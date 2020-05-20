@@ -26,6 +26,10 @@ public class ApplicationManager {
     private DbHelper dbHelper;
     private String browser;
 
+    public byte[] takeScreenshot() {
+        return ((TakesScreenshot) wd).getScreenshotAs(OutputType.BYTES);
+    }
+
     public ApplicationManager(String browser) {
         this.browser=browser;
         properties = new Properties();
